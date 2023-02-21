@@ -3,10 +3,7 @@ package lambda;
 public class LambdaDemo {
     static String prefix = "-";
     public static void show(){
-         greet(message -> System.out.println(prefix+message));
-
-         Printer printer = message -> System.out.println(message);
-         greet(printer);//Essentially objects representing anonymous functions
+         greet(System.out::println); // method reference of a static function
     }
 
     private static void greet(Printer printer) {
