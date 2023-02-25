@@ -7,8 +7,15 @@ import java.util.function.Supplier;
 
 public class LambdaDemo {
     public static void show(){
-        Function<String,Integer> map = str->str.length();
-        var length = map.apply("Rider");
-        System.out.println(length);
+         //key : value
+        //first : "key = value"
+        // second : "{key = value}"
+
+        Function<String,String>replaceColon = str->str.replace(':','=');
+        Function<String,String>braces       = str-> "{" + str + "}";
+        var result = replaceColon.andThen(braces).apply("key:value");
+        System.out.println(result);
+
+
     }
 }
