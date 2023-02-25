@@ -9,8 +9,11 @@ import java.util.function.Supplier;
 public class LambdaDemo {
     public static void show(){
         //Predicate
-        Predicate<String> isLongerThan5 = str -> str.length() > 5;
-        var result = isLongerThan5.test("A string");
+        Predicate<String>hasLeftBrace  = str -> str.startsWith("{");
+        Predicate<String>hasRightBrace = str -> str.endsWith("}");
+        Predicate<String> hasLeftAndRightBrace = hasLeftBrace.and(hasRightBrace);
+        var result = hasLeftAndRightBrace.test("{key : value}");
         System.out.println(result);
+        System.out.println(hasLeftBrace.or(hasRightBrace).test("{key : pair}"));
     }
 }
