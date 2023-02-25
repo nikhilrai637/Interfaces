@@ -13,7 +13,11 @@ public class LambdaDemo {
 
         Function<String,String>replaceColon = str->str.replace(':','=');
         Function<String,String>braces       = str-> "{" + str + "}";
-        var result = replaceColon.andThen(braces).apply("key:value");
+        var result = replaceColon
+                    .andThen(braces)
+                    .apply("key:value");
+
+        result = braces.compose(replaceColon).apply("key:value");
         System.out.println(result);
 
 
